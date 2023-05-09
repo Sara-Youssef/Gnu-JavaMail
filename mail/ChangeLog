@@ -1,0 +1,685 @@
+2014-02-01  Conrad T. Pino  <Conrad@Pino.com>
+
+	* test/Makefile: Remove trailing white space from lines:
+	    JAVAC_OPTS =
+	    CLASSPATH =
+	        -rm -rf configure
+	  Change "JAVA" (JVM) variable:
+	    -JAVA = jamvm
+	    +JAVA = java
+
+2009-12-08  Chris Burdess  <dog@gnu.org>
+
+	* build.xml: Fix echo message.
+	* source/gnu/mail/providers/imap/IMAPFolder.java: Only change mode
+	  from mailbox status response when select was issued.
+	* source/javax/mail/internet/MimeMessage.java: Handle cases where
+	  content is binary and multipart header is set.
+
+2009-02-12  Jan Michalico  <jan.michalica@centire.com>
+
+	* source/gnu/mail/providers/nntp/NNTPStore.java,
+	  source/gnu/mail/providers/nntp/NNTPTransport.java,
+	  source/gnu/mail/providers/nntp/package.html: Add NNTPS support.
+
+2007-11-29  Conrad T. Pino  <Conrad@Pino.com>
+
+	* source/javax/mail/Provider.java: Conform to API, add missing method
+	  Provider.Type.toString; stop Provider.Type.type unused field warnings.
+
+2007-11-29  Conrad T. Pino  <Conrad@Pino.com>
+
+	* source/gnu/mail/providers/nntp/NNTPStore.java,
+	  source/gnu/mail/providers/nntp/NNTPTransport.java: Remove unused
+	  private methods.
+
+2007-11-29  Conrad T. Pino  <Conrad@Pino.com>
+
+	* source/gnu/mail/providers/imap/IMAPFolder.java,
+	  source/gnu/mail/util/Base64OutputStream.java,
+	  source/javax/mail/search/RecipientTerm.java: Stop unused local
+	  variable warnings.
+
+2007-11-29  Conrad T. Pino  <Conrad@Pino.com>
+
+	* source/gnu/mail/handler/Application.java,
+	  source/gnu/mail/handler/Message.java,
+	  source/gnu/mail/handler/Multipart.java,
+	  source/gnu/mail/handler/Text.java,
+	  source/gnu/mail/providers/imap/IMAPFolder.java,
+	  source/gnu/mail/providers/imap/IMAPMessage.java,
+	  source/gnu/mail/providers/imap/IMAPMultipart.java,
+	  source/gnu/mail/providers/maildir/MaildirFolder.java,
+	  source/gnu/mail/providers/mbox/MboxMessage.java,
+	  source/gnu/mail/providers/nntp/NNTPStore.java,
+	  source/gnu/mail/providers/nntp/NNTPTransport.java,
+	  source/gnu/mail/providers/pop3/POP3Message.java,
+	  source/gnu/mail/providers/pop3/POP3Store.java,
+	  source/gnu/mail/providers/ReadOnlyMessage.java,
+	  source/gnu/mail/treeutil/StatusEvent.java,
+	  source/gnu/mail/treeutil/StatusListener.java,
+	  source/gnu/mail/util/Base64InputStream.java,
+	  source/gnu/mail/util/Base64OutputStream.java,
+	  source/gnu/mail/util/QInputStream.java,
+	  source/gnu/mail/util/QPInputStream.java,
+	  source.java,x/mail/Folder.java,
+	  source.java,x/mail/internet/InternetHeaders.java,
+	  source.java,x/mail/internet/MailDateFormat.java,
+	  source.java,x/mail/internet/MimeBodyPart.java,
+	  source.java,x/mail/internet/MimeMessage.java,
+	  source.java,x/mail/internet/MimeMultipart.java,
+	  source.java,x/mail/Message.java,
+	  source.java,x/mail/Multipart.java,
+	  source.java,x/mail/Session.java,
+	  source.java,x/mail/UIDFolder.java,
+	  source.java,x/mail/URLName.java,
+	  source.java,x/mail/util/SharedByteArrayInputStream.java: Stop unused
+	  import warnings; replace package imports with package member inports.
+
+2007-11-28  Conrad T. Pino  <Conrad@Pino.com>
+
+	* source/gnu/mail/providers/mbox/MboxStore.java: Stop warnings; replace
+	  '/' and "/" with private static final char separatorChar; remove unused
+	  import java.io.IOException;
+
+2007-11-27  Conrad T. Pino  <Conrad@Pino.com>
+
+	* ChangeLog,
+	  source/gnu/mail/handler/Application.java,
+	  source/gnu/mail/handler/ApplicationOctetStream.java,
+	  source/gnu/mail/handler/Message.java,
+	  source/gnu/mail/handler/MessageRFC822.java,
+	  source/gnu/mail/handler/Multipart.java,
+	  source/gnu/mail/handler/MultipartAlternative.java,
+	  source/gnu/mail/handler/MultipartMixed.java,
+	  source/gnu/mail/handler/MultipartRelated.java,
+	  source/gnu/mail/handler/MultipartReport.java,
+	  source/gnu/mail/handler/MultipartSigned.java,
+	  source/gnu/mail/handler/Text.java,
+	  source/gnu/mail/handler/TextHtml.java,
+	  source/gnu/mail/handler/TextPlain.java,
+	  source/gnu/mail/handler/TextXml.java,
+	  source/gnu/mail/providers/ReadOnlyMessage.java,
+	  source/gnu/mail/providers/imap/ACL.java,
+	  source/gnu/mail/providers/imap/IMAPBodyPart.java,
+	  source/gnu/mail/providers/imap/IMAPFlags.java,
+	  source/gnu/mail/providers/imap/IMAPFolder.java,
+	  source/gnu/mail/providers/imap/IMAPMessage.java,
+	  source/gnu/mail/providers/imap/IMAPMultipart.java,
+	  source/gnu/mail/providers/imap/IMAPMultipartDataSource.java,
+	  source/gnu/mail/providers/imap/IMAPStore.java,
+	  source/gnu/mail/providers/imap/Rights.java,
+	  source/gnu/mail/providers/maildir/MaildirFolder.java,
+	  source/gnu/mail/providers/maildir/MaildirMessage.java,
+	  source/gnu/mail/providers/maildir/MaildirStore.java,
+	  source/gnu/mail/providers/mbox/MboxFolder.java,
+	  source/gnu/mail/providers/mbox/MboxMessage.java,
+	  source/gnu/mail/providers/mbox/MboxOutputStream.java,
+	  source/gnu/mail/providers/mbox/MboxStore.java,
+	  source/gnu/mail/providers/nntp/ListFolderListener.java,
+	  source/gnu/mail/providers/nntp/NNTPFolder.java,
+	  source/gnu/mail/providers/nntp/NNTPMessage.java,
+	  source/gnu/mail/providers/nntp/NNTPRootFolder.java,
+	  source/gnu/mail/providers/nntp/NNTPStore.java,
+	  source/gnu/mail/providers/nntp/NNTPTransport.java,
+	  source/gnu/mail/providers/pop3/POP3Folder.java,
+	  source/gnu/mail/providers/pop3/POP3Message.java,
+	  source/gnu/mail/providers/pop3/POP3Store.java,
+	  source/gnu/mail/providers/smtp/SMTPTransport.java,
+	  source/gnu/mail/treeutil/StatusEvent.java,
+	  source/gnu/mail/treeutil/StatusListener.java,
+	  source/gnu/mail/treeutil/StatusSource.java,
+	  source/gnu/mail/util/BOutputStream.java,
+	  source/gnu/mail/util/Base64InputStream.java,
+	  source/gnu/mail/util/Base64OutputStream.java,
+	  source/gnu/mail/util/MailboxURLConnection.java,
+	  source/gnu/mail/util/QInputStream.java,
+	  source/gnu/mail/util/QOutputStream.java,
+	  source/gnu/mail/util/QPInputStream.java,
+	  source/gnu/mail/util/QPOutputStream.java,
+	  source/gnu/mail/util/RFC2822OutputStream.java,
+	  source/gnu/mail/util/UUInputStream.java,
+	  source/gnu/mail/util/UUOutputStream.java,
+	  source/javax/mail/Address.java,
+	  source/javax/mail/AuthenticationFailedException.java,
+	  source/javax/mail/Authenticator.java,
+	  source/javax/mail/BodyPart.java,
+	  source/javax/mail/FetchProfile.java,
+	  source/javax/mail/Flags.java,
+	  source/javax/mail/Folder.java,
+	  source/javax/mail/FolderClosedException.java,
+	  source/javax/mail/FolderNotFoundException.java,
+	  source/javax/mail/Header.java,
+	  source/javax/mail/IllegalWriteException.java,
+	  source/javax/mail/Message.java,
+	  source/javax/mail/MessageAware.java,
+	  source/javax/mail/MessageContext.java,
+	  source/javax/mail/MessageRemovedException.java,
+	  source/javax/mail/MessagingException.java,
+	  source/javax/mail/MethodNotSupportedException.java,
+	  source/javax/mail/Multipart.java,
+	  source/javax/mail/MultipartDataSource.java,
+	  source/javax/mail/NoSuchProviderException.java,
+	  source/javax/mail/Part.java,
+	  source/javax/mail/PasswordAuthentication.java,
+	  source/javax/mail/Provider.java,
+	  source/javax/mail/Quota.java,
+	  source/javax/mail/QuotaAwareStore.java,
+	  source/javax/mail/ReadOnlyFolderException.java,
+	  source/javax/mail/SendFailedException.java,
+	  source/javax/mail/Service.java,
+	  source/javax/mail/Session.java,
+	  source/javax/mail/Store.java,
+	  source/javax/mail/StoreClosedException.java,
+	  source/javax/mail/Transport.java,
+	  source/javax/mail/UIDFolder.java,
+	  source/javax/mail/URLName.java,
+	  source/javax/mail/event/ConnectionAdapter.java,
+	  source/javax/mail/event/ConnectionEvent.java,
+	  source/javax/mail/event/ConnectionListener.java,
+	  source/javax/mail/event/FolderAdapter.java,
+	  source/javax/mail/event/FolderEvent.java,
+	  source/javax/mail/event/FolderListener.java,
+	  source/javax/mail/event/MailEvent.java,
+	  source/javax/mail/event/MessageChangedEvent.java,
+	  source/javax/mail/event/MessageChangedListener.java,
+	  source/javax/mail/event/MessageCountAdapter.java,
+	  source/javax/mail/event/MessageCountEvent.java,
+	  source/javax/mail/event/MessageCountListener.java,
+	  source/javax/mail/event/StoreEvent.java,
+	  source/javax/mail/event/StoreListener.java,
+	  source/javax/mail/event/TransportAdapter.java,
+	  source/javax/mail/event/TransportEvent.java,
+	  source/javax/mail/event/TransportListener.java,
+	  source/javax/mail/internet/AddressException.java,
+	  source/javax/mail/internet/ContentDisposition.java,
+	  source/javax/mail/internet/ContentType.java,
+	  source/javax/mail/internet/HeaderTokenizer.java,
+	  source/javax/mail/internet/InternetAddress.java,
+	  source/javax/mail/internet/InternetHeaders.java,
+	  source/javax/mail/internet/MailDateFormat.java,
+	  source/javax/mail/internet/MimeBodyPart.java,
+	  source/javax/mail/internet/MimeMessage.java,
+	  source/javax/mail/internet/MimeMultipart.java,
+	  source/javax/mail/internet/MimePart.java,
+	  source/javax/mail/internet/MimePartDataSource.java,
+	  source/javax/mail/internet/MimeUtility.java,
+	  source/javax/mail/internet/NewsAddress.java,
+	  source/javax/mail/internet/ParameterList.java,
+	  source/javax/mail/internet/ParseException.java,
+	  source/javax/mail/internet/SharedInputStream.java,
+	  source/javax/mail/search/AddressStringTerm.java,
+	  source/javax/mail/search/AddressTerm.java,
+	  source/javax/mail/search/AndTerm.java,
+	  source/javax/mail/search/BodyTerm.java,
+	  source/javax/mail/search/ComparisonTerm.java,
+	  source/javax/mail/search/DateTerm.java,
+	  source/javax/mail/search/FlagTerm.java,
+	  source/javax/mail/search/FromStringTerm.java,
+	  source/javax/mail/search/FromTerm.java,
+	  source/javax/mail/search/HeaderTerm.java,
+	  source/javax/mail/search/IntegerComparisonTerm.java,
+	  source/javax/mail/search/MessageIDTerm.java,
+	  source/javax/mail/search/MessageNumberTerm.java,
+	  source/javax/mail/search/NotTerm.java,
+	  source/javax/mail/search/OrTerm.java,
+	  source/javax/mail/search/ReceivedDateTerm.java,
+	  source/javax/mail/search/RecipientStringTerm.java,
+	  source/javax/mail/search/RecipientTerm.java,
+	  source/javax/mail/search/SearchException.java,
+	  source/javax/mail/search/SearchTerm.java,
+	  source/javax/mail/search/SentDateTerm.java,
+	  source/javax/mail/search/SizeTerm.java,
+	  source/javax/mail/search/StringTerm.java,
+	  source/javax/mail/search/SubjectTerm.java,
+	  source/javax/mail/util/ByteArrayDataSource.java,
+	  source/javax/mail/util/SharedByteArrayInputStream.java,
+	  source/javax/mail/util/SharedFileInputStream.java,
+	  test/src/AllTests.java,
+	  test/src/FolderTest.java,
+	  test/src/NonFolderTest.java,
+	  test/src/SessionTest.java,
+	  test/src/StoreTest.java: Strip trailing white space.
+
+2007-07-16  Chris Burdess  <dog@bluezoo.org>
+
+	* source/javax/mail/internet/MimeBodyPart.java: Don't encode file
+	  output in message source encoding.
+
+2007-06-30  Chris Burdess  <dog@bluezoo.org>
+
+	* build.xml: Add imaps provider entry.
+
+2007-06-01  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPFolder.java: Correct
+	  implementation of list() method.
+
+2007-06-01  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPStore.java,
+	  source/gnu/mail/providers/nntp/NNTPStore.java,
+	  source/gnu/mail/providers/nntp/NNTPTransport.java,
+	  source/gnu/mail/providers/pop3/POP3Store.java,
+	  source/gnu/mail/providers/smtp/SMTPTransport.java,
+	  source/javax/mail/Session.java: Rework logging.
+
+2007-05-31  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPFolder.java: don't ask for complete
+	  RFC822 in fetch.
+
+2007-05-31  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPFolder.java: prefetch message
+	  contents before calling copyMessages.
+
+2007-05-31  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPMultipartDataSource.java: add null
+	  pointer check.
+
+2007-04-28  Chris Burdess  <dog@bluezoo.org>
+
+	* source/javax/mail/internet/MimeUtility.java: Ensure pseudorandom
+	  hashCode generated integers are positive.
+
+2007-04-26  Chris Burdess  <dog@bluezoo.org>
+
+	* source/javax/mail/internet/InternetAddress.java: Use FQDN of host.
+	* source/javax/mail/internet/MimeMessage.java,
+	  source/javax/mail/internet/MimeUtility.java: Update Message-ID when
+	  message content changes.
+
+2007-04-24  Arend Freije  <afreije@inn.nl>
+
+	* source/javax/mail/util/SharedFileInputStream.java: Maintain a count of
+	  open streams that share the same file.
+
+2007-04-24  Arend Freije  <afreije@inn.nl>
+
+	* javamail.providers.in,
+	  source/gnu/mail/providers/smtp/SMTPTransport.java: Complete SMTPS
+	  implementation.
+
+2007-03-29  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/smtp/SMTPTransport.java: updated licence
+	  terms.
+
+2007-03-27  Chris Burdess  <dog@bluezoo.org>
+
+	* source/javax/mail/internet/InternetHeaders.java: make inner class
+	  InternetHeader constructors public.
+
+2007-03-27  Chris Burdess  <dog@bluezoo.org>
+
+	* source/javax/mail/internet/InternetHeaders.java: make inner class
+	  InternetHeader protected for compatibility with JavaMail 1.4.
+
+2006-07-24  Chris Burdess  <dog@bluezoo.org>
+
+	* source/javax/mail/internet/MimeBodyPart.java,
+	* source/javax/mail/internet/MimeMessage.java: Ensure correct
+	  content-type is applied for new MIME body parts in setFileName.
+
+2006-07-24  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/protocol/pop3/POP3Folder.java: Return null for
+	  getParent if root folder.
+
+2006-07-19  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/handler/Application.java: Permit InputStream as a
+	  supported object type.
+
+2006-05-05  Cedric Hyppolite  <cedric.hyppolite@free.fr>
+
+	* source/gnu/mail/providers/nntp/NNTPRootFolder.java,
+	* source/gnu/mail/providers/nntp/ListFolderListener: Provide
+	  callback interface for receiving group names asynchronously.
+
+2006-05-03  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPBodyPart.java: Handle IMAP strings
+	  as content in FETCH BODY MIME body part updates.
+
+2006-04-26  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPMessage.java: Fix BODYSTRUCTURE
+	  parsing of MIME body parts.
+
+2006-03-08  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/smtp/SMTPTransport.java: Fix NPE in
+	  sendMessage.
+
+2006-02-23  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPStore.java,
+	  source/gnu/mail/providers/pop3/POP3Store.java: isConnected method
+	  issues a NOOP to server to ensure that connection is still usable.
+
+2006-02-21  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPFolder.java: Permit custom
+	  SearchTerms in IMAP searches.
+
+2006-02-18  Chris Burdess  <dog@bluezoo.org>
+
+	* source/gnu/mail/providers/imap/IMAPFolder.java: Always list from
+	  NIL context rather than parent folder.
+	* source/javax/mail/Flags.java: Fix for IllegalAccessError in
+	  libgcj.
+
+2006-02-12  Chris Burdess  <dog@bluezoo.org>
+
+	* IMAPStore.java: Fix for possible NPE getting namespaces.
+
+2005-11-26  Chris Burdess  <dog@bluezoo.org>
+
+	* (all): Updated JavaMail API to 1.4 (except PreencodedMimeBodyPart
+	class, see TODO) based on JSR 919.
+
+2005-11-25  Chris Burdess  <dog@bluezoo.org>
+
+	* IMAPStore.java,POP3Store.java,MaildirStore.java: Un-URL-encode
+	file paths from URLNames.
+
+2005-11-24  Chris Burdess  <dog@bluezoo.org>
+
+	* m4/gnumail_with_activation_jar.m4,m4/gnumail_with_inetlib_jar.m4:
+	Add $prefix/share/java to search path for external libraries.
+
+2005-11-20  Chris Burdess  <dog@bluezoo.org>
+
+	* build.xml: Fixed obsolete classpath reference in javadoc target.
+
+2005-09-09  Chris Burdess  <dog@bluezoo.org>
+
+	* smtp: Implemented MTRK extension.
+
+2005-09-07  Chris Burdess  <dog@bluezoo.org>
+
+	* IMAPFolder.java,ACL.java,Rights.java: Simplistic (and deprecated)
+	IMAP ACL implementation for compatibility purposes.
+
+2005-06-20  Archit Shah  <ashah@redhat.com>
+
+	* MimeMessage.java,MimeBodyPart.java: Remove line wrapping in the
+	bodies of MIME parts.
+
+2005-06-06  Chris Burdess  <dog@bluezoo.org>
+
+	* InternetAddress.java: Do not set strict in no-arg constructor.
+	* all: Redocumented all javax.mail classes.
+
+2005-06-08  Archit Shah  <ashah@redhat.com>
+
+	* InternetHeaders.java: Do not wrap header input stream in
+	CRLFInputStream.
+
+2005-06-06  Chris Burdess  <dog@bluezoo.org>
+
+	* Makefile.am,Session.java,IMAPStore.java,POP3Store.java,
+	SMTPTransport.java,NNTPTransport.java,NNTPStore.java,
+	MboxStore.java,MaildirStore.java: New logging framework.
+	* POP3Store.java,SMTPTransport.java: Handle POP3S,
+	SMTPS protocols.
+
+2005-06-06  Byron Foster  <byron@base2.cc>
+
+	* Makefile.am: Fix creation of javamail.address.map.
+	* IMAPStore.java: Handle IMAPS protocol.
+
+2005-06-02  Byron Foster  <byron@base2.cc>
+
+	* IMAPFolder.java: Do server-side searches for unread message
+	counts.
+
+2005-05-16  Fernando Nasser  <fnasser@redhat.com>
+
+	* SMTPConnection.java: Make SMTP transport behave the same as the
+	Sun RI when host is not supplied on connect.
+
+2005-05-16  Fernando Nasser  <fnasser@redhat.com>
+
+	* FetchProfile.java,Header.java,Message.java,MimeUtility.java,
+	InternetHeaders.java: Changes to conform to JavaMail 1.3 API.
+
+2005-05-11  Chris Burdess  <dog@bluezoo.org>
+
+	* Service.java,Multipart.java: Changes to conform to JavaMail 1.3
+	API.
+	* SMTPTransport.java: Default to localhost if no host specified.
+
+2005-05-01  Chris Burdess  <dog@bluezoo.org>
+
+	* MboxStore.java,MboxFolder.java: Encode/decode URL paths correctly.
+
+2005-04-26  Chris Burdess  <dog@bluezoo.org>
+
+	* MboxStore.java,MboxFolder.java: Convert slashes in folder
+	pathnames to platform path separator before interpreting.
+
+2005-04-23  Chris Burdess  <dog@bluezoo.org>
+
+	* Makefile.am,Makefile.in,acinclude.m4,build.xml,configure,
+	configure.ac,m4/ac_check_class.m4,m4/ac_check_classpath.m4,
+	m4/ac_check_home.m4,m4/ac_check_junit.m4,m4/ac_check_rqrd_class.m4,
+	m4/ac_java_options.m4,m4/ac_prog_jar.m4,m4/ac_prog_java.m4,
+	m4/ac_prog_java_cc.m4,m4/ac_prog_java_works.m4,m4/ac_prog_javac.m4,
+	m4/ac_prog_javac_works.m4,m4/ac_prog_javadoc.m4,m4/ac_prog_javah.m4,
+	m4/ac_try_run_javac.m4,m4/am_prog_gcj.m4,
+	m4/gnumail_with_activation_jar.m4,m4/gnumail_with_inetlib_jar.m4
+	m4/gnumail_with_jsse.m4: Updated build system to detect common free
+	JVMs, compilers and utilities.
+	* INSTALL: Updated install documentation.
+
+2005-04-21  Chris Burdess  <dog@bluezoo.org>
+
+	* MboxStore.java,MboxFolder.java: Rework of path framework to better
+	follow JavaMail standard.
+
+2005-04-20  Chris Burdess  <dog@bluezoo.org>
+
+	* MboxStore.java: Clarification of default mailbox directory location.
+
+2005-04-19  Chris Burdess  <dog@bluezoo.org>
+
+	* IMAPMessage.java,IMAPFlags.java: Store only flag deltas using
+	+FLAGS and -FLAGS during setFlags.
+
+2005-04-19  Chris Burdess  <dog@bluezoo.org>
+
+	* MimeMultipart.java: Remove debugging code.
+	* mailcap,MultipartReport.java: Mailcap entry for multipart/report.
+
+2005-03-04  Chris Burdess  <dog@bluezoo.org>
+
+	* InternetHeaders.java: Ensure input stream is always filtered for
+	CRLF pairs.
+
+2005-02-21  Chris Burdess  <dog@bluezoo.org>
+
+	* MboxStore.java,MboxFolder.java: Allow absolute filenames.
+
+2005-02-17  Chris Burdess  <dog@bluezoo.org>
+
+	* MboxFolder.java: Clarification of canonical function.
+	* MailDateFormat.java: Handle trailing whitespace.
+
+2005-02-15  Countach  <yahoo@canberracity.org>
+
+	* MboxFolder.java,MboxStore.java: Support Windows filenames.
+
+2005-02-14  Neil Campbell  <batneil@thebatcave.org.uk>
+
+	* IMAPFolder.java: Allow folders to hold both messages and folders.
+
+2005-02-07  Chris Burdess  <dog@bluezoo.org>
+
+	* README.pop3,README.nntp,README.mbox,README.maildir: Correct
+	method names in documentation.
+
+2005-01-19  Chris Burdess  <dog@bluezoo.org>
+
+	* acinclude.m4: Detect JSSE in Java runtime.
+	* UUInputStream.java,UUOutputStream.java: New UU encoder/decoder
+	supporting block reads and under FSF copyright.
+	* UUDecoderStream.java,UUEncoderStream.java: Removed.
+
+2005-01-05  Chris Burdess  <dog@bluezoo.org>
+
+	* UUDecoderStream.java: Fixed case where EOF is reached before buffer
+	is full.
+	* POP3Message.java: Make Message.setFlag(DELETED) work.
+	* mbox: Converted to GNU style.
+
+2004-12-08  Chris Burdess  <dog@bluezoo.org>
+
+	* Makefile.am: Fixed relative META-INF.
+	* all: Reformatted according to GNU Classpath guidelines.
+	* ContentType.java,ParameterList.java: Parse exception message
+	details cause of exception (#103447).
+
+2004-12-04  Chris Burdess  <dog@gnu.org>
+
+	* IMAPStore.java,IMAPFolder.java: Expose quota functionality of
+	underlying IMAPConnection.
+
+2004-11-01  Chris Burdess  <dog@bluezoo.org>
+
+	* ParameterList.java: Report original value which caused a parse to
+	fail.
+
+2004-09-30  Chris Burdess  <dog@bluezoo.org>
+
+	* MANIFEST.MF: Added Implementation-* entries.
+
+2004-09-29  Chris Burdess  <dog@bluezoo.org>
+
+	* IMAPStore.java: Implement IMAP namespaces.
+
+2004-09-28  Chris Burdess  <dog@bluezoo.org>
+
+	* URLName.java: Permit '@' in userInfo component of URL.
+
+2004-09-24  Chris Burdess  <dog@bluezoo.org>
+
+	* SMTPTransport.java,IMAPStore.java,POP3Store.java: Implement
+	    password authentication callbacks where necessary.
+
+2004-09-10  Chris Burdess  <dog@bluezoo.org>
+
+	* SMTPTransport.java,IMAPStore.java,POP3Store.java: Implement
+	    user ordering of SASL mechanism preferences.
+
+2004-09-09  Chris Burdess  <dog@bluezoo.org>
+
+	* SMTPTransport.java: Only use DSN if server advertises the
+	    capability.
+	* ParameterList.java,MimeUtility.java: Support RFC 2231.
+
+2004-09-08  Chris Burdess  <dog@bluezoo.org>
+
+	* SMTPTransport.java: New property value tls=required added and
+	    ESMTP extension list no longer exposed. EHLO issued following
+            STARTTLS.
+	* MimeMultipart.java,InternetHeaders.java: Trim method to remove
+	    final CR.
+
+2004-09-07  Chris Burdess  <dog@bluezoo.org>
+
+	* SMTPTransport.java: Expose ESMTP extension list.
+	* SMTPTransport.java: Don't pass ESMTP parameters when EHLO fails.
+	* SMTPTransport.java: Don't invoke DATA when no valid recipients are
+	    specified.
+
+2004-08-06  Chris Burdess  <dog@bluezoo.org>
+
+	* IMAPFolder.java: Correct folder pathnames in list() commands.
+
+2004-07-31  Chris Burdess  <dog@bluezoo.org>
+
+	* IMAPFolder.java: Implement UIDFolder.
+
+2004-07-08  Chris Burdess  <dog@bluezoo.org>
+
+	* MailDateFormat.java: Accept obsolete style of timezone.
+
+2004-06-07  Chris Burdess  <dog@bluezoo.org>
+
+	* NNTPTransport.java: Implemented transport events.
+
+2004-06-01  Chris Burdess  <dog@bluezoo.org>
+
+	* Makefile.am: Applied patch #3105.
+
+2004-05-27  Chris Burdess  <dog@bluezoo.org>
+
+	* MessagingException.java: Print embedded stack trace.
+	* MailboxURLConnection.java: Stream handler for mailboxes.
+
+2004-05-24  Chris Burdess  <dog@bluezoo.org>
+
+	* MimeUtility.java: Fixed MIME-Java character conversion (#8658)
+	* SMTPTransport.java: Fixed typo propagating wrong delivery event
+	    type.
+
+2004-03-28  Chris Burdess  <dog@bluezoo.org>
+
+	* Updated all required files for JavaMail 1.3
+	* configure.ac: Removed AC_PROG_JAVADOC.
+	* Makefile.am: Added install targets.
+
+2004-03-13  Chris Burdess  <dog@bluezoo.org>
+
+	* acinclude.m4: Added macros to find activation.jar and inetlib.jar.
+	* configure.ac: Search for jarfiles.
+	* Makefile.am: Allow builds in other directories.
+
+2004-02-10  Chris Burdess  <dog@bluezoo.org>
+
+	* javamail.charset.map: Added some missing Java charsets.
+	* MimeUtility.java: Corrected a charset detection bug.
+
+2004-02-05  Chris Burdess  <dog@bluezoo.org>
+
+	* NNTPStore.java: Corrected retrieval of "listall" property.
+
+2004-01-29  Chris Burdess  <dog@bluezoo.org>
+
+	* QPOutputStream.java: Applied O/yvind Harboe's patch to correct output of
+	    space character.
+
+2004-01-26  Chris Burdess  <dog@bluezoo.org>
+
+    * build.xml: Updated ant build script to match new build system.
+
+2004-01-25  Chris Burdess  <dog@bluezoo.org>
+
+	* SMTPTransport.java: Incorporated code to recover the connection to
+	    control state on an I/O error during message transmission.
+
+2004-01-23  Chris Burdess  <dog@bluezoo.org>
+
+	* RFC2822OutputStream.java: Applied O/yvind Harboe's patch to correct
+	    UTF-8 encoding problem in gcj runtime.
+
+2004-01-19  Chris Burdess  <dog@bluezoo.org>
+
+    * Makefile.am: Workarounds to avoid recursion.
+    * configure.ac: Added PACKAGE and VERSION for compatibility with different
+        versions of automake.
+
+2004-01-11  Chris Burdess  <dog@bluezoo.org>
+
+	* Makefile.am: Major rework, dropping jarcompiler.
+	    Incremental builds are now supported.
+	    2 jars are generated: gnumail.jar (API) and providers.jar.
+	    javamail.default.providers lists only providers selected in configure.
+	    New target `javadoc' generates API documentation in docs subdirectory.
+	* configure.ac: Added javadoc program.
+	* imap/package.html: Corrected typos.
+

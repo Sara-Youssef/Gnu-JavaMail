@@ -1,0 +1,42 @@
+This is GNU JavaMail 1.5, part of the GNU classpathx project.
+
+Please refer to the INSTALL file for installation instructions,
+and the COPYING file for licensing.
+
+  General
+
+This package fully implements the public J2EE JavaMail API, version 1.5.0,
+and adds a number of features not available in the reference implementation
+by Oracle, including:
+
+    - mbox provider
+    - Maildir provider
+    - NNTP (store and transport) provider
+    - full source code and copyleft license
+
+All GNU JavaMail network providers support SSL/TLS connections, both on the
+initial connection and via STARTTLS-type mechanisms wherever the server
+supports it. You are encouraged to protect your own privacy and that of your
+users by using these security features, either by specifying the "s" versions
+of the relevant protocols in URLs (e.g. "imaps:", "pop3s:", "nntps:") or by
+ensuring that the "mail.tls" session property is set (it is set by default
+but can be overridden on a per-provider basis). If you have to access a
+server via unencrypted means, all the providers except NNTP support SASL
+authentication which can be used to ensure that at least your credentials are
+not passed in plaintext over the network.
+
+  Prerequisites
+
+In order to build GNU JavaMail you must have a modern (>=1.5) Java compiler
+such as OpenJDK, and the inetlib-1.2 and GNU JAF libraries installed. The
+latter are also part of GNU classpathx. The build process will create a single
+jar file containing all the classes you need from these libraries.
+
+  Bugs
+
+If you encounter a bug please report it immediately at
+
+  https://savannah.gnu.org/bugs/?group=classpathx
+
+-- 
+Chris Burdess, November 2013

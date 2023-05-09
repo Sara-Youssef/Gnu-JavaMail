@@ -1,0 +1,8 @@
+Specification-Title: JavaMail API
+Specification-Vendor: Sun Microsystems, Inc.
+Specification-Version: 1.5
+Implementation-Title: GNU JavaMail
+Implementation-Version: 1.5
+Implementation-Vendor: The Free Software Foundation, Inc.
+Implementation-URL: http://www.gnu.org/software/classpathx/javamail/
+
