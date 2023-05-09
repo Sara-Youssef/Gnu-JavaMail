@@ -28,7 +28,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
   </description>
 
   <property name="gnumail-version" value="1.1.2"/>
-  <property name="providers-version" value="1.1.2"/>
+  <property name="providers-version" value="1.1.2.1"/>
 
   <!-- Locations -->
   <property name='src' location='source'/>

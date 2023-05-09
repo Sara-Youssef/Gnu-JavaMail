@@ -246,7 +246,7 @@ public class SMTPConnection
             SSLSocketFactory factory = getSSLSocketFactory(tm);
             SSLSocket ss =
               (SSLSocket) factory.createSocket(socket, host, port, true);
-            String[] protocols = { "TLSv1", "SSLv3" };
+            String[] protocols = { "TLSv1", "TLSv1.2", "TLSv1.3" };
             ss.setEnabledProtocols(protocols);
             ss.setUseClientMode(true);
             ss.startHandshake();
@@ -672,7 +672,7 @@ public class SMTPConnection
         int port = socket.getPort();
         SSLSocket ss =
           (SSLSocket) factory.createSocket(socket, hostname, port, true);
-        String[] protocols = { "TLSv1", "SSLv3" };
+        String[] protocols = { "TLSv1", "TLSv1.2", "TLSv1.3" };
         ss.setEnabledProtocols(protocols);
         ss.setUseClientMode(true);
         ss.startHandshake();
