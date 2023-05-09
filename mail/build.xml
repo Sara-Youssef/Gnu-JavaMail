@@ -27,17 +27,20 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
   installed.
   </description>
 
+  <property name="gnumail-version" value="1.1.2"/>
+  <property name="providers-version" value="1.1.2"/>
+
   <!-- Locations -->
   <property name='src' location='source'/>
   <property name='dst' location='classes'/>
   <property name='doc' location='docs'/>
     
-  <property name='gnumail.jar' location='gnumail.jar'/>
-  <property name='providers.jar' location='gnumail-providers.jar'/>
+  <property name='gnumail.jar' location='gnumail-${gnumail-version}.jar'/>
+  <property name='providers.jar' location='gnumail-providers-${providers-version}.jar'/>
     
   <!-- Override these for your own locations -->
-  <property name='activation.jar' location='/usr/share/java/activation.jar'/>
-  <property name='inetlib.jar' location='/usr/share/java/inetlib.jar'/>
+  <property name='activation.jar' location='../activation/activation.jar'/>
+  <property name='inetlib.jar' location='../inetlib/inetlib.jar'/>
     
   <property name='META-INF' location='${dst}/META-INF'/>
   <property name='COPYING' location='${META-INF}/COPYING'/>
@@ -169,8 +172,10 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
         <include name='javamail.charset.map'/>
       </metainf>
       <include name='javax/mail/**/*.class'/>
+      <include name='javax/mail/**/*.properties'/>
       <include name='gnu/mail/util/*.class'/>
       <include name='gnu/mail/handler/*.class'/>
+      <include name='gnu/mail/**/*.properties'/>
     </jar>
   </target>
 
@@ -189,6 +194,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
       <include name='gnu/mail/providers/nntp/*.class' unless='disable-nntp'/>
       <include name='gnu/mail/providers/mbox/*.class' unless='disable-mbox'/>
       <include name='gnu/mail/providers/maildir/*.class' unless='disable-maildir'/>
+      <include name='gnu/mail/providers/**/*.properties'/>
     </jar>
   </target>
 

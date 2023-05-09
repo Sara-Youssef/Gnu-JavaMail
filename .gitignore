@@ -1,0 +1,14 @@
+# Ignored
+/mail/*
+/inetlib/*
+/activation/*
+
+# Files to not ignore
+!/mail/build.xml
+!/inetlib/build.xml
+!/activation/build.xml
+
+# Folder to not ignore
+!/mail/source
+!/inetlib/source
+!/activation/source
