@@ -156,6 +156,17 @@ public class SMTPTransport
         connection = new SMTPConnection(host, port,
                                         connectionTimeout, timeout,
                                         tls, tm);
+
+        String SSLEnabledProtocolsProp = getProperty("ssl.protocols");
+        if (SSLEnabledProtocolsProp != null) {
+            String[] SSLEnabledProtocols = SSLEnabledProtocolsProp
+                .replaceAll(" ", "")
+                .replaceAll("[,]", " ")
+                .split(" ");
+
+            connection.setSSLEnabledProtocols(SSLEnabledProtocols);
+        }
+
         if (session.getDebug())
           {
             Logger logger = connection.getLogger();

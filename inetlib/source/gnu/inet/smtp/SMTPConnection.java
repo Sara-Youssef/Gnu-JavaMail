@@ -125,6 +125,7 @@ public class SMTPConnection
   private int timeout;
   private boolean secure;
   private TrustManager tm;
+  private String[] SSLEnabledProtocolsIfAny;
 
   /**
    * The underlying socket used for communicating with the server.
@@ -216,6 +217,7 @@ public class SMTPConnection
     this.timeout = timeout;
     this.secure = secure;
     this.tm = tm;
+    this.SSLEnabledProtocolsIfAny = null;
   }
 
   /**
@@ -246,7 +248,11 @@ public class SMTPConnection
             SSLSocketFactory factory = getSSLSocketFactory(tm);
             SSLSocket ss =
               (SSLSocket) factory.createSocket(socket, host, port, true);
-            String[] protocols = { "TLSv1", "TLSv1.2", "TLSv1.3" };
+
+            String[] protocols = SSLEnabledProtocolsIfAny != null
+                ? SSLEnabledProtocolsIfAny
+                : ss.getSupportedProtocols();
+
             ss.setEnabledProtocols(protocols);
             ss.setUseClientMode(true);
             ss.startHandshake();
@@ -306,6 +312,12 @@ public class SMTPConnection
       {
         h.flush();
       }
+  }
+
+  public void setSSLEnabledProtocols(String[] SSLEnabledProtocols) {
+    SSLEnabledProtocolsIfAny = new String[SSLEnabledProtocols.length];
+    for(int i = 0; i < SSLEnabledProtocols.length; i++)
+        SSLEnabledProtocolsIfAny[i] = SSLEnabledProtocols[i];
   }
 
   /**
@@ -672,7 +684,11 @@ public class SMTPConnection
         int port = socket.getPort();
         SSLSocket ss =
           (SSLSocket) factory.createSocket(socket, hostname, port, true);
-        String[] protocols = { "TLSv1", "TLSv1.2", "TLSv1.3" };
+
+          String[] protocols = SSLEnabledProtocolsIfAny != null
+          ? SSLEnabledProtocolsIfAny
+          : ss.getSupportedProtocols();
+
         ss.setEnabledProtocols(protocols);
         ss.setUseClientMode(true);
         ss.startHandshake();
