@@ -125,7 +125,7 @@ public class SMTPConnection
   private int timeout;
   private boolean secure;
   private TrustManager tm;
-  private String[] SSLEnabledProtocolsIfAny;
+  private String[] sslTlsProtocolsIfAny;
 
   /**
    * The underlying socket used for communicating with the server.
@@ -217,7 +217,7 @@ public class SMTPConnection
     this.timeout = timeout;
     this.secure = secure;
     this.tm = tm;
-    this.SSLEnabledProtocolsIfAny = null;
+    this.sslTlsProtocolsIfAny = null;
   }
 
   /**
@@ -249,8 +249,8 @@ public class SMTPConnection
             SSLSocket ss =
               (SSLSocket) factory.createSocket(socket, host, port, true);
 
-            String[] protocols = SSLEnabledProtocolsIfAny != null
-                ? SSLEnabledProtocolsIfAny
+            String[] protocols = sslTlsProtocolsIfAny != null
+                ? sslTlsProtocolsIfAny
                 : ss.getSupportedProtocols();
 
             ss.setEnabledProtocols(protocols);
@@ -314,10 +314,10 @@ public class SMTPConnection
       }
   }
 
-  public void setSSLEnabledProtocols(String[] SSLEnabledProtocols) {
-    SSLEnabledProtocolsIfAny = new String[SSLEnabledProtocols.length];
-    for(int i = 0; i < SSLEnabledProtocols.length; i++)
-        SSLEnabledProtocolsIfAny[i] = SSLEnabledProtocols[i];
+  public void setSslTlsProtocolsIfAny(String[] sslTlsProtocols) {
+    sslTlsProtocolsIfAny = new String[sslTlsProtocols.length];
+    for(int i = 0; i < sslTlsProtocols.length; i++)
+        sslTlsProtocolsIfAny[i] = sslTlsProtocols[i];
   }
 
   /**
@@ -685,8 +685,8 @@ public class SMTPConnection
         SSLSocket ss =
           (SSLSocket) factory.createSocket(socket, hostname, port, true);
 
-          String[] protocols = SSLEnabledProtocolsIfAny != null
-          ? SSLEnabledProtocolsIfAny
+          String[] protocols = sslTlsProtocolsIfAny != null
+          ? sslTlsProtocolsIfAny
           : ss.getSupportedProtocols();
 
         ss.setEnabledProtocols(protocols);

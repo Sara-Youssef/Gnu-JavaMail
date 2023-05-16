@@ -143,6 +143,16 @@ public final class POP3Store
                 logger.addHandler(handler);
               }
 
+            String sslTlsProtocolsProp = getProperty("ssl.protocols");
+            if (sslTlsProtocolsProp != null) {
+                String[] sslTlsProtocols = sslTlsProtocolsProp
+                    .replaceAll(" ", "")
+                    .replaceAll("[,]", " ")
+                    .split(" ");
+
+                connection.setSslTlsProtocolsIfAny(sslTlsProtocols);
+              }
+
             // Disable APOP if necessary
             if (propertyIsFalse("apop"))
               {

@@ -135,6 +135,7 @@ public class POP3Connection
   private int timeout;
   private boolean secure;
   private TrustManager tm;
+  private String[] sslTlsProtocolsIfAny;
 
   /**
    * The socket used to communicate with the server.
@@ -219,6 +220,7 @@ public class POP3Connection
     this.timeout = timeout;
     this.secure = secure;
     this.tm = tm;
+    this.sslTlsProtocolsIfAny = null;
   }
 
   /**
@@ -249,7 +251,11 @@ public class POP3Connection
             SSLSocketFactory factory = getSSLSocketFactory(tm);
             SSLSocket ss =
               (SSLSocket) factory.createSocket(socket, hostname, port, true);
-            String[] protocols = { "TLSv1", "SSLv3" };
+
+            String[] protocols = sslTlsProtocolsIfAny != null
+                ? sslTlsProtocolsIfAny
+                : ss.getSupportedProtocols();
+
             ss.setEnabledProtocols(protocols);
             ss.setUseClientMode(true);
             ss.startHandshake();
@@ -277,6 +283,12 @@ public class POP3Connection
       }
     // APOP timestamp
     timestamp = parseTimestamp(response);
+  }
+
+  public void setSslTlsProtocolsIfAny(String[] sslTlsProtocols) {
+    sslTlsProtocolsIfAny = new String[sslTlsProtocols.length];
+    for(int i = 0; i < sslTlsProtocols.length; i++)
+        sslTlsProtocolsIfAny[i] = sslTlsProtocols[i];
   }
 
   /**
@@ -547,7 +559,11 @@ public class POP3Connection
         int port = socket.getPort();
         SSLSocket ss =
           (SSLSocket) factory.createSocket(socket, hostname, port, true);
-        String[] protocols = { "TLSv1", "SSLv3" };
+
+        String[] protocols = sslTlsProtocolsIfAny != null
+            ? sslTlsProtocolsIfAny
+            : ss.getSupportedProtocols();
+
         ss.setEnabledProtocols(protocols);
         ss.setUseClientMode(true);
         ss.startHandshake();

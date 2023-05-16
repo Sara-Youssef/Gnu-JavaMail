@@ -152,6 +152,16 @@ public class IMAPStore
             IMAPAdapter callback = this.new DefaultAdapter(capabilities);
             connection.capability(callback);
 
+            String sslTlsProtocolsProp = getProperty("ssl.protocols");
+            if (sslTlsProtocolsProp != null) {
+                String[] sslTlsProtocols = sslTlsProtocolsProp
+                    .replaceAll(" ", "")
+                    .replaceAll("[,]", " ")
+                    .split(" ");
+
+                connection.setSslTlsProtocolsIfAny(sslTlsProtocols);
+            }
+
             // Ignore tls settings if we are making the connection
             // to a dedicated SSL port. (imaps)
             if (!tls && capabilities.contains(IMAPConstants.STARTTLS))

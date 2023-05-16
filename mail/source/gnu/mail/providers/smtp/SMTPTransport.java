@@ -157,16 +157,6 @@ public class SMTPTransport
                                         connectionTimeout, timeout,
                                         tls, tm);
 
-        String SSLEnabledProtocolsProp = getProperty("ssl.protocols");
-        if (SSLEnabledProtocolsProp != null) {
-            String[] SSLEnabledProtocols = SSLEnabledProtocolsProp
-                .replaceAll(" ", "")
-                .replaceAll("[,]", " ")
-                .split(" ");
-
-            connection.setSSLEnabledProtocols(SSLEnabledProtocols);
-        }
-
         if (session.getDebug())
           {
             Logger logger = connection.getLogger();
@@ -177,6 +167,16 @@ public class SMTPTransport
             handler.setLevel(Level.ALL);
             logger.addHandler(handler);
           }
+
+        String sslTlsProtocolsProp = getProperty("ssl.protocols");
+        if (sslTlsProtocolsProp != null) {
+            String[] sslTlsProtocols = sslTlsProtocolsProp
+                .replaceAll(" ", "")
+                .replaceAll("[,]", " ")
+                .split(" ");
+
+            connection.setSslTlsProtocolsIfAny(sslTlsProtocols);
+        }
 
         // EHLO/HELO
         if (propertyIsFalse("ehlo"))
