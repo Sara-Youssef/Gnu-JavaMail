@@ -27,12 +27,14 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
     installed.
     </description>
 
+    <property name="activation-version" value="1.1.2"/>
+
     <!-- Locations -->
     <property name='src' location='source' />
     <property name='dst' location='classes' />
     <property name='doc' location='docs'/>
 
-    <property name='activation.jar' location='activation.jar' />
+    <property name='activation.jar' location='activation-${activation-version}.jar' />
 
     <property name='META-INF' location='${dst}/META-INF' />
 
