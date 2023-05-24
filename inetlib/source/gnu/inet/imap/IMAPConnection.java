@@ -127,6 +127,7 @@ public class IMAPConnection
   private int timeout;
   private boolean secure;
   private TrustManager tm;
+  private String[] sslTlsProtocolsIfAny;
 
   /**
    * The socket used for communication with the server.
@@ -223,6 +224,7 @@ public class IMAPConnection
     this.timeout = timeout;
     this.secure = secure;
     this.tm = tm;
+    this.sslTlsProtocolsIfAny = null;
   }
 
   /**
@@ -253,8 +255,9 @@ public class IMAPConnection
             SSLSocketFactory factory = getSSLSocketFactory(tm);
             SSLSocket ss =
               (SSLSocket) factory.createSocket(socket, host, port, true);
-            String[] protocols = { "TLSv1", "SSLv3" };
-            ss.setEnabledProtocols(protocols);
+
+            if (sslTlsProtocolsIfAny != null)
+              ss.setEnabledProtocols(sslTlsProtocolsIfAny);
             ss.setUseClientMode(true);
             ss.startHandshake();
             socket = ss;
@@ -272,6 +275,17 @@ public class IMAPConnection
     OutputStream os = socket.getOutputStream();
     os = new BufferedOutputStream(os);
     out = new CRLFOutputStream(os);
+  }
+
+  public void setSslTlsProtocolsIfAny(String[] sslTlsProtocolsIfAny) {
+    if (sslTlsProtocolsIfAny == null || sslTlsProtocolsIfAny.length < 1) {
+        this.sslTlsProtocolsIfAny = null;
+        return;
+    }
+
+    this.sslTlsProtocolsIfAny = new String[sslTlsProtocolsIfAny.length];
+    for (int i = 0; i < sslTlsProtocolsIfAny.length; i++)
+        this.sslTlsProtocolsIfAny[i] = sslTlsProtocolsIfAny[i];
   }
 
   /**
@@ -1381,8 +1395,9 @@ public class IMAPConnection
 
         SSLSocket ss =
           (SSLSocket) factory.createSocket(socket, hostname, port, true);
-        String[] protocols = { "TLSv1", "SSLv3" };
-        ss.setEnabledProtocols(protocols);
+
+        if (sslTlsProtocolsIfAny != null)
+          ss.setEnabledProtocols(sslTlsProtocolsIfAny);
         ss.setUseClientMode(true);
         ss.startHandshake();
 

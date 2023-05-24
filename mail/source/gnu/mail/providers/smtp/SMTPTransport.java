@@ -145,7 +145,7 @@ public class SMTPTransport
       {
         int connectionTimeout = getIntProperty("connectiontimeout");
         int timeout = getIntProperty("timeout");
-        boolean tls = "stmps".equals(url.getProtocol());
+        boolean tls = propertyIsTrue("tls");
         // Locate custom trust manager
         TrustManager tm = null;
         if (tls)
@@ -156,6 +156,7 @@ public class SMTPTransport
         connection = new SMTPConnection(host, port,
                                         connectionTimeout, timeout,
                                         tls, tm);
+
         if (session.getDebug())
           {
             Logger logger = connection.getLogger();
@@ -166,6 +167,16 @@ public class SMTPTransport
             handler.setLevel(Level.ALL);
             logger.addHandler(handler);
           }
+
+        String sslTlsProtocolsProp = getProperty("ssl.protocols");
+        if (sslTlsProtocolsProp != null) {
+            String[] sslTlsProtocols = sslTlsProtocolsProp
+                .replaceAll(" ", "")
+                .replaceAll("[,]", " ")
+                .split(" ");
+
+            connection.setSslTlsProtocolsIfAny(sslTlsProtocols);
+        }
 
         // EHLO/HELO
         if (propertyIsFalse("ehlo"))
