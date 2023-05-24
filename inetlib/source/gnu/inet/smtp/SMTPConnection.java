@@ -249,11 +249,8 @@ public class SMTPConnection
             SSLSocket ss =
               (SSLSocket) factory.createSocket(socket, host, port, true);
 
-            String[] protocols = sslTlsProtocolsIfAny != null
-                ? sslTlsProtocolsIfAny
-                : ss.getSupportedProtocols();
-
-            ss.setEnabledProtocols(protocols);
+            if (sslTlsProtocolsIfAny != null)
+              ss.setEnabledProtocols(sslTlsProtocolsIfAny);
             ss.setUseClientMode(true);
             ss.startHandshake();
             socket = ss;
@@ -314,10 +311,15 @@ public class SMTPConnection
       }
   }
 
-  public void setSslTlsProtocolsIfAny(String[] sslTlsProtocols) {
-    sslTlsProtocolsIfAny = new String[sslTlsProtocols.length];
-    for(int i = 0; i < sslTlsProtocols.length; i++)
-        sslTlsProtocolsIfAny[i] = sslTlsProtocols[i];
+  public void setSslTlsProtocolsIfAny(String[] sslTlsProtocolsIfAny) {
+    if (sslTlsProtocolsIfAny == null || sslTlsProtocolsIfAny.length < 1) {
+        this.sslTlsProtocolsIfAny = null;
+        return;
+    }
+
+    this.sslTlsProtocolsIfAny = new String[sslTlsProtocolsIfAny.length];
+    for (int i = 0; i < sslTlsProtocolsIfAny.length; i++)
+        this.sslTlsProtocolsIfAny[i] = sslTlsProtocolsIfAny[i];
   }
 
   /**
@@ -685,11 +687,8 @@ public class SMTPConnection
         SSLSocket ss =
           (SSLSocket) factory.createSocket(socket, hostname, port, true);
 
-          String[] protocols = sslTlsProtocolsIfAny != null
-          ? sslTlsProtocolsIfAny
-          : ss.getSupportedProtocols();
-
-        ss.setEnabledProtocols(protocols);
+        if (sslTlsProtocolsIfAny != null)
+          ss.setEnabledProtocols(sslTlsProtocolsIfAny);
         ss.setUseClientMode(true);
         ss.startHandshake();
 
